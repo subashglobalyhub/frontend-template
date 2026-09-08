@@ -2,28 +2,40 @@
 
 ARG NODE_VERSION=24.18.0
 
-FROM node:${NODE_VERSION}-alpine AS deps
+FROM node:${NODE_VERSION}
+
 WORKDIR /website/frontend
+
+RUN apt-get update && apt-get install -y nginx \
+        wget \
+        nano \
+        dnsutils \
+        net-tools \
+        git \
+        curl \
+        cmake \
+        unzip \
+        build-essential \
+        software-properties-common \
+        zip \
+        cron \
+        gpg
+
+ARG NEXT_PUBLIC_MOCK_DATA
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_MOCK_DATA=$NEXT_PUBLIC_MOCK_DATA
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
-
-FROM node:${NODE_VERSION}-alpine AS builder
-WORKDIR /website/frontend
-COPY --from=deps /website/frontend/node_modules ./node_modules
 COPY . .
 RUN yarn build
 
-FROM node:${NODE_VERSION}-alpine AS runner
-WORKDIR /website/frontend
 ENV NODE_ENV=production
-ENV PORT=3000
+EXPOSE 80
 
-COPY --from=builder /website/frontend/public ./public
-COPY --from=builder /website/frontend/.next ./.next
-COPY --from=builder /website/frontend/node_modules ./node_modules
-COPY --from=builder /website/frontend/package.json ./package.json
-COPY --from=builder /website/frontend/next.config.ts ./next.config.ts
+RUN rm -f /etc/nginx/sites-enabled/default
+COPY devops/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY devops/nginx/frontend.conf /etc/nginx/conf.d/frontend.conf
 
-EXPOSE 3000
-
-CMD ["yarn", "start"]
+CMD ["bash", "-c", "service nginx start && yarn start"]
