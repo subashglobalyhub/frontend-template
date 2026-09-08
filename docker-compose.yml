@@ -30,4 +30,3 @@ volumes:
 
 networks:
   iten:
-    external: true
