@@ -1,8 +1,77 @@
-<svg width="283" height="283" viewBox="0 0 283 283" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="283" height="283" rx="41" fill="#6820E4"/>
-<path d="M138.518 179.415C112.546 179.415 91.4154 158.285 91.4154 132.313C91.4154 106.34 112.546 85.2097 138.518 85.2097C164.491 85.2097 185.621 106.34 185.621 132.313C185.621 158.285 164.491 179.415 138.518 179.415ZM138.518 111.002C126.767 111.002 117.208 120.562 117.208 132.313C117.208 144.064 126.767 153.623 138.518 153.623C150.269 153.623 159.829 144.064 159.829 132.313C159.829 120.562 150.269 111.002 138.518 111.002Z" fill="#F1F5F9"/>
-<path d="M137.722 220.443C119.278 220.443 101.884 212.342 90 198.217L109.736 181.613C116.707 189.899 126.908 194.651 137.722 194.651C149.492 194.651 160.615 188.925 167.476 179.335L188.454 194.343C176.761 210.686 157.796 220.443 137.722 220.443Z" fill="#F1F5F9"/>
-<g opacity="0.4">
-<path d="M176.745 90.3623C184.423 90.3623 190.648 84.1378 190.648 76.4595C190.648 68.7812 184.423 62.5568 176.745 62.5568C169.067 62.5568 162.842 68.7812 162.842 76.4595C162.842 84.1378 169.067 90.3623 176.745 90.3623Z" fill="#F8FAFC"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Flame Glow Effect -->
+    <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb703" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#fb8500" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#fb8500" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Flame Gradient -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ffb703"/>
+      <stop offset="50%" stop-color="#fb8500"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <!-- Inner Core Flame Gradient -->
+    <linearGradient id="flameCore" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fff3b0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App Icon Background -->
+  <rect width="512" height="512" rx="108" fill="#050505"/>
+
+  <!-- Outer Dashed Decorative Ring -->
+  <circle cx="256" cy="256" r="225" fill="none" stroke="#222222" stroke-width="2"/>
+  <circle cx="256" cy="256" r="216" fill="none" stroke="#666666" stroke-width="3" stroke-dasharray="8 6"/>
+  <circle cx="256" cy="256" r="207" fill="none" stroke="#222222" stroke-width="1.5"/>
+
+  <!-- Flag Pole -->
+  <line x1="238" y1="25" x2="238" y2="295" stroke="#003893" stroke-width="7" stroke-linecap="round"/>
+  <line x1="238" y1="25" x2="238" y2="295" stroke="#1d702d" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Nepal Flag -->
+  <!-- Blue Outer Border -->
+  <path d="M 238,28 L 332,82 L 272,82 L 350,138 L 238,138 Z" fill="#003893"/>
+  <!-- Crimson Inner Fill -->
+  <path d="M 241,34 L 322,80 L 268,80 L 338,134 L 241,134 Z" fill="#dc143c"/>
+
+  <!-- Moon Symbol in Top Pennon -->
+  <path d="M 252,65 A 11,11 0 0,0 272,65 A 10,10 0 0,1 252,65 Z" fill="#ffffff"/>
+  <circle cx="262" cy="67" r="2.5" fill="#ffffff"/>
+
+  <!-- Sun Symbol in Bottom Pennon -->
+  <circle cx="264" cy="110" r="6" fill="#ffffff"/>
+  <g fill="#ffffff">
+    <polygon points="264,101 262,104 266,104"/>
+    <polygon points="264,119 262,116 266,116"/>
+    <polygon points="255,110 258,108 258,112"/>
+    <polygon points="273,110 270,108 270,112"/>
+    <polygon points="258,104 260,106 257,107"/>
+    <polygon points="270,116 268,114 271,113"/>
+    <polygon points="258,116 260,114 257,113"/>
+    <polygon points="270,104 268,106 271,107"/>
+  </g>
+
+  <!-- Yellow Devanagari Text: निःशुल्क -->
+  <text x="252" y="170" font-family="'Mukta', 'Noto Sans Devanagari', 'Kohinoor Devanagari', sans-serif" font-size="38" font-weight="800" fill="#ccff00" letter-spacing="1">निःशुल्क</text>
+
+  <!-- White Devanagari Text: शिक्षा -->
+  <text x="256" y="292" font-family="'Mukta', 'Noto Sans Devanagari', 'Kohinoor Devanagari', sans-serif" font-size="118" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">शिक्षा</text>
+
+  <!-- Candle Glow -->
+  <circle cx="256" cy="385" r="85" fill="url(#flameGlow)"/>
+
+  <!-- Flame Outer -->
+  <path d="M 256,310 C 278,360 286,390 273,414 C 265,428 247,428 239,414 C 226,390 234,360 256,310 Z" fill="url(#flameGrad)"/>
+
+  <!-- Flame Inner Core -->
+  <path d="M 256,345 C 267,372 272,392 265,408 C 260,416 252,416 247,408 C 240,392 245,372 256,345 Z" fill="url(#flameCore)"/>
+
+  <!-- Candle Base -->
+  <ellipse cx="256" cy="442" rx="34" ry="12" fill="#e6c200"/>
+  <rect x="222" y="432" width="68" height="12" rx="4" fill="#ffd700"/>
 </svg>
