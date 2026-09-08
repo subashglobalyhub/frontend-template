@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+
+ARG NODE_VERSION=24.18.0
+
+FROM node:${NODE_VERSION}-alpine
+
+WORKDIR /website/frontend
+
+COPY package.json yarn.lock ./
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["yarn", "dev"]
